@@ -1,0 +1,4 @@
+reverseTR y@(x:xs) = reverseTRh y []
+					where 
+					reverseTRh [x] acc = x:acc
+					reverseTRh (x:xs) acc = reverseTRh xs $! x:acc 
