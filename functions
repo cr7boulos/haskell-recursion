@@ -1,4 +1,22 @@
+--tail recursive function to reverse a list
 reverseTR y@(x:xs) = reverseTRh y []
-					where 
-					reverseTRh [x] acc = x:acc
-					reverseTRh (x:xs) acc = reverseTRh xs $! x:acc 
+			where 
+			reverseTRh [x] acc = x:acc
+			reverseTRh (x:xs) acc = reverseTRh xs $! x:acc 
+			
+{- the same code as it would be written in Java. 
+Note, Java compilers do not natively provide a way to use tail recursive optimization
+
+public static String reverse(String str)
+	{
+		return reverseTRh(str, "");
+	}
+	
+	private static String reverseTRh(String input, String accumulator)
+	{
+		if(input.length() < 1)
+			return accumulator;
+		else
+			return reverseTRh(input.substring(1), input.substring(0,1) + accumulator);
+	}
+-}
